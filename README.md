@@ -2,30 +2,43 @@
 
 # JavaScript - Week 1: Data Type, Loop, dan Control Flow
 
-## 1. Data Type
-JavaScript memiliki beberapa tipe data utama:
-- **String**: Teks yang diapit oleh tanda kutip (' ' atau " ").
-- **Number**: Angka, baik bilangan bulat maupun desimal.
-- **Boolean**: Nilai `true` atau `false`.
-- **Null**: Variabel yang secara sengaja dikosongkan.
-- **Undefined**: Variabel yang belum diberi nilai.
-- **Object**: Struktur data kompleks yang berisi properti dan nilai.
-- **Array**: Struktur data yang dapat menyimpan banyak nilai.
 
-### Contoh Penggunaan:
+## 1. Data Type
+JavaScript adalah bahasa pemrograman dinamik dengan tipe data dinamis. Sifat dinamis ini membuat suatu variabel dapat diberi nilai dengan tipe data apapun. Selain itu JavaScript juga bersifat _weakly typed_ yang artinya ketika suatu operasi melibatkan tipe data yang berbeda, konversi tipe data akan dilakukan secara implisit (otomatis).
+
+### Tipe Data Primitif
+Dalam JavaScript, tipe data primitif bersifat _immutable_ (tidak dapat diubah).
+- **Undefined**: Ketiadaan nilai. JavaScript menggunakan `Undefined` ketika variabel belum ada nilai sama  sekali.
+- **Null**: Ketiadaan object (kosong).
+- **Boolean**: Nilai logika `true` atau `false`.
+- **Number**: Angka, baik bilangan bulat maupun desimal.
+- **String**: Teks yang diapit oleh tanda kutip (' ' atau " ").
+
+#### Contoh Penggunaan:
 ```javascript
-let name = "John"; // String
-let age = 25; // Number
-let isStudent = true; // Boolean
-let address = null; // Null
 let job; // Undefined
+let address = null; // Null
+let isStudent = true; // Boolean
+let age = 25; // Number
+let name = "John"; // String
 let person = { firstName: "Alice", lastName: "Doe" }; // Object
 let numbers = [1, 2, 3, 4, 5]; // Array
 ```
 
-### Assignment:
+### Objects
+Dalam JavaScript, object bersifat _mutable_ (dapat diubah).
+- **Object**: Struktur data kompleks yang berisi kumpulan properti dan nilai.
+- **Dates**: Representasi suatu waktu dengan format yang independen.
+- **Array**: Struktur data berindeks integer (bilangan bulat) yang dapat menyimpan banyak nilai.
+- **Map**: Struktur data dengan tipe indeks bebas (primitif atau object).
+- **Set**: Struktur data yang hanya dapat menyimpan nilai unik.
+
+#### Tugas
 1. Buat variabel dengan masing-masing tipe data di atas.
 2. Cetak semua variabel tersebut ke console menggunakan `console.log()`.
+
+#### Tautan
+- [JavaScript data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures)
 
 ---
 
