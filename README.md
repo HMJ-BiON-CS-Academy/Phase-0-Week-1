@@ -1,6 +1,15 @@
-# Phase-0-Week-1
+# Foundational JavaScript
 
-# JavaScript - Week 1: Data Type, Loop, dan Control Flow
+## Pengenalan
+
+JavaScript adalah bahasa pemrograman yang fleksibel (dinamik), tidak seperti bahasa pemrograman lain pada umumnya. Pada sesi ini kita akan mempelajari lebih mendalam apa itu JavaScript dan perbedaannya dengan NodeJs. Mengapa ada perbedaan? Bukankah NodeJs menggunakan bahasa pemrograman JavaScript juga?
+
+Dalam konteks web, kita tahu bahwa JavaScript itu dijalankan pada client-side atau browser. Browser modern saat ini pasti dilengkapi dengan **JavaScript Engine** yang menterjemahkan bahasa JavaScript menjadi bahasa mesin yang dapat dieksekusi mesin. Yang paling umum dikenal adalah **V8 JavaScript Engine** yang dikembangkan Google. Browser yang berbasis *chromium* (Google chrome, ms Edge, Opera) menggunakan V8 engine ini. Yang perlu digaris bawahi disini adalah, **JavaScript engine ini adalah sebuah program C++**. Bahkan NodeJs sendiri juga sebuah program C++ yang memanfaatkan V8 Engine untuk menghadirkan fitur-fitur pengembangan back-end. JavaScript sendiri adalah bahasa pemrograman yang *high level* untuk memudahkan developer mengembangkan interaktif web.
+
+Untuk dipahami bahwa NodeJs itu mengekstensi fitur-fitur yang ada dari V8 Engine. Artinya ruang lingkup NodeJs lebih besar dari ruang lingkup JavaScript/ECMAscript. Pada sesi ini kita tidak akan membahas fitur yang khusus dimiliki NodeJs saja seperti `FileSystem`. Kita akan mempelajari dasar-dasar JavaScript yang diperlukan untuk pengembangan back-end dengan NodeJs.
+
+
+## Data Type, Loop, dan Control Flow
 
 
 ## 1. Data Type
