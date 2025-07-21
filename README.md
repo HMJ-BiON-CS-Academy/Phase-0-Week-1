@@ -9,11 +9,8 @@ Dalam konteks web, kita tahu bahwa JavaScript itu dijalankan pada client-side at
 Untuk dipahami bahwa NodeJs itu mengekstensi fitur-fitur yang ada dari V8 Engine. Artinya ruang lingkup NodeJs lebih besar dari ruang lingkup JavaScript/ECMAscript. Pada sesi ini kita tidak akan membahas fitur yang khusus dimiliki NodeJs saja seperti `FileSystem`. Kita akan mempelajari dasar-dasar JavaScript yang diperlukan untuk pengembangan back-end dengan NodeJs.
 
 
-## Data Type, Loop, dan Control Flow
-
-
-## 1. Data Type
-JavaScript adalah bahasa pemrograman dinamik dengan tipe data dinamis. Sifat dinamis ini membuat suatu variabel dapat diberi nilai dengan tipe data apapun. Selain itu JavaScript juga bersifat _weakly typed_ yang artinya ketika suatu operasi melibatkan tipe data yang berbeda, konversi tipe data akan dilakukan secara implisit (otomatis).
+## I. Data Type
+JavaScript adalah bahasa pemrograman dinamik dengan tipe data dinamis. Sifat dinamis ini membuat suatu variabel dapat diberi nilai dengan tipe data apapun. Hal ini membuat JavaScriptc bersifat _weakly typed_ yang artinya ketika suatu operasi melibatkan tipe data yang berbeda, konversi tipe data akan dilakukan secara implisit (otomatis).
 
 ### Tipe Data Primitif
 Dalam JavaScript, tipe data primitif bersifat _immutable_ (tidak dapat diubah).
@@ -35,12 +32,14 @@ let numbers = [1, 2, 3, 4, 5]; // Array
 ```
 
 ### Objects
-Dalam JavaScript, object bersifat _mutable_ (dapat diubah).
+Dalam JavaScript, object bersifat _mutable_ (dapat diubah). Berikut beberapa contoh tipe object yang ada di JavaScript:
 - **Object**: Struktur data kompleks yang berisi kumpulan properti dan nilai.
 - **Dates**: Representasi suatu waktu dengan format yang independen.
 - **Array**: Struktur data berindeks integer (bilangan bulat) yang dapat menyimpan banyak nilai.
 - **Map**: Struktur data dengan tipe indeks bebas (primitif atau object).
 - **Set**: Struktur data yang hanya dapat menyimpan nilai unik.
+
+Satu ciri khas yang membedakan JavaScript dengan bahasa lainnya adalah `function` juga merupakan object. Dan karena ia adalah object maka object itu dapat diberi/ditambahkan properti atau method dan dapat dianggap seperti variabel biasa.
 
 #### Tugas
 1. Buat variabel dengan masing-masing tipe data di atas.
@@ -56,9 +55,12 @@ Loop digunakan untuk menjalankan blok kode berulang kali.
 
 ### Jenis Loop dalam JavaScript:
 1. **for** - Perulangan dengan jumlah iterasi yang sudah diketahui.
-2. **while** - Perulangan selama kondisi tertentu masih bernilai `true`.
-3. **do...while** - Mirip dengan `while`, tetapi dijalankan minimal sekali sebelum pengecekan kondisi.
+2. **for...in**  - Perulangan terhadap key dari sebuah koleksi.
+3. **for...of** - Perulangan terhadap nilai dari sebuah koleksi.
 4. **forEach** - Khusus untuk array.
+5. **while** - Perulangan selama kondisi tertentu masih bernilai `true`.
+6. **do...while** - Mirip dengan `while`, tetapi dijalankan minimal sekali sebelum pengecekan kondisi.
+
 
 ### Contoh Penggunaan:
 ```javascript
