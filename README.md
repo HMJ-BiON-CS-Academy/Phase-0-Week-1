@@ -9,21 +9,42 @@ Dalam konteks web, kita tahu bahwa JavaScript itu dijalankan pada client-side at
 Untuk dipahami bahwa NodeJs itu mengekstensi fitur-fitur yang ada dari V8 Engine. Artinya ruang lingkup NodeJs lebih besar dari ruang lingkup JavaScript/ECMAscript. Pada sesi ini kita tidak akan membahas fitur yang khusus dimiliki NodeJs saja seperti `FileSystem`. Kita akan mempelajari dasar-dasar JavaScript yang diperlukan untuk pengembangan back-end dengan NodeJs.
 
 
-## I. Data Type
+## I. Variable, Data Type, and Operators
+
+### Deklarasi Variabel
+Terdapat 3 kata kunci untuk deklarasi variable dalam JavaScript: `var`, `let`, dan `const`.
+- `var` sudah ada sejak awal mula JavaScript. Deklarasi variabel dengan `var` memiliki *scope* (ruang lingkup) global, atau function. Artinya hanya dapat diakses didalam fungsi dimana variable `var` dideklarasikan, atau dapat diakses secara global jika dideklarasikan diluar fungsi.
+- `let` diperkenalkan sejak ES6. Deklarasi variable dengan `let` memiliki *block scope*. Artinya hanya dapat diakses dalam ruang lingkup sebuah blok (dalam lingkup `if`, atau lingkup `for`, atau dalam lingkup tanda { }).
+- `const` mirip dengan `let`. Digunakan untuk deklarasi variabel yang bersifat *read-only* (isi variabel tidak dapat diubah).
+
+```javascript
+function testScope() {
+  if (true) {
+    var x = 10;
+    let y = 20;
+  }
+
+  console.log(x); // ✅ Works: var is function-scoped
+  console.log(y); // ❌ Error: let is block-scoped
+}
+
+testScope();
+```
+
 JavaScript adalah bahasa pemrograman dinamik dengan tipe data dinamis. Sifat dinamis ini membuat suatu variabel dapat diberi nilai dengan tipe data apapun. Hal ini membuat JavaScriptc bersifat _weakly typed_ yang artinya ketika suatu operasi melibatkan tipe data yang berbeda, konversi tipe data akan dilakukan secara implisit (otomatis).
 
-### Tipe Data Primitif
+### Tipe-Tipe Data
 Dalam JavaScript, tipe data primitif bersifat _immutable_ (tidak dapat diubah).
 - **Undefined**: Ketiadaan nilai. JavaScript menggunakan `Undefined` ketika variabel belum ada nilai sama  sekali.
 - **Null**: Ketiadaan object (kosong).
 - **Boolean**: Nilai logika `true` atau `false`.
 - **Number**: Angka, baik bilangan bulat maupun desimal.
-- **String**: Teks yang diapit oleh tanda kutip (' ' atau " ").
+- **String**: Teks yang diapit oleh tanda kutip (' ' atau " " atau ` `).
 
 #### Contoh Penggunaan:
 ```javascript
 let job; // Undefined
-let address = null; // Null
+let email = null; // Null
 let isStudent = true; // Boolean
 let age = 25; // Number
 let name = "John"; // String
@@ -31,15 +52,9 @@ let person = { firstName: "Alice", lastName: "Doe" }; // Object
 let numbers = [1, 2, 3, 4, 5]; // Array
 ```
 
-### Objects
-Dalam JavaScript, object bersifat _mutable_ (dapat diubah). Berikut beberapa contoh tipe object yang ada di JavaScript:
-- **Object**: Struktur data kompleks yang berisi kumpulan properti dan nilai.
-- **Dates**: Representasi suatu waktu dengan format yang independen.
-- **Array**: Struktur data berindeks integer (bilangan bulat) yang dapat menyimpan banyak nilai.
-- **Map**: Struktur data dengan tipe indeks bebas (primitif atau object).
-- **Set**: Struktur data yang hanya dapat menyimpan nilai unik.
-
-Satu ciri khas yang membedakan JavaScript dengan bahasa lainnya adalah `function` juga merupakan object. Dan karena ia adalah object maka object itu dapat diberi/ditambahkan properti atau method dan dapat dianggap seperti variabel biasa.
+### Object
+Dalam JavaScript, object bersifat _mutable_ (dapat diubah). Objek adalah sebuah struktur data kompleks yang berisi kumpulan properti dan nilai.
+Satu ciri khas yang membedakan JavaScript dengan bahasa lainnya adalah `function` juga merupakan object. Dan karena Function juga merupakan object maka object itu dapat diberi/ditambahkan properti atau method dan dapat dianggap seperti variabel biasa. Konsep ini dalam JavaScript dikenal juga dengan sebutan "*First-Class Function*".
 
 #### Tugas
 1. Buat variabel dengan masing-masing tipe data di atas.
@@ -47,6 +62,7 @@ Satu ciri khas yang membedakan JavaScript dengan bahasa lainnya adalah `function
 
 #### Tautan
 - [JavaScript data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures)
+- [First-Class Function](https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function)
 
 ---
 
