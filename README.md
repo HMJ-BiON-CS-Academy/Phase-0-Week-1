@@ -31,15 +31,21 @@ function testScope() {
 testScope();
 ```
 
-JavaScript adalah bahasa pemrograman dinamik dengan tipe data dinamis. Sifat dinamis ini membuat suatu variabel dapat diberi nilai dengan tipe data apapun. Hal ini membuat JavaScriptc bersifat _weakly typed_ yang artinya ketika suatu operasi melibatkan tipe data yang berbeda, konversi tipe data akan dilakukan secara implisit (otomatis).
 
 ### Tipe-Tipe Data
-Dalam JavaScript, tipe data primitif bersifat _immutable_ (tidak dapat diubah).
-- **Undefined**: Ketiadaan nilai. JavaScript menggunakan `Undefined` ketika variabel belum ada nilai sama  sekali.
-- **Null**: Ketiadaan object (kosong).
+JavaScript memiliki tipe data dinamis atau disebut juga _weakly typed_. Sifat dinamis ini membuat suatu variabel dapat diberi nilai dengan tipe data apapun. Ketika suatu operasi melibatkan tipe data yang berbeda, konversi tipe data akan dilakukan secara implisit (otomatis).
+
+Beberapa tipe data primitif JavaScript:
+- **Undefined**: Ketiadaan nilai. JavaScript menggunakan `Undefined` ketika variabel belum ada nilai sama  sekali
+- **Null**: Ketiadaan object (kosong)
 - **Boolean**: Nilai logika `true` atau `false`.
-- **Number**: Angka, baik bilangan bulat maupun desimal.
-- **String**: Teks yang diapit oleh tanda kutip (' ' atau " " atau ` `).
+- **Number**: Angka, baik bilangan bulat maupun desimal. Ada juga tipe `BigInt`
+- **String**: Teks yang diapit oleh tanda kutip ('' atau "" atau ``)
+
+Dan tipe data non-primitif (reference) JavaScript:
+- **Object**: sebuah koleksi pasangan key-value. Ada object yang built-in dan yg didefinisikan user sendiri.
+- **Array**: juga berupa `object` yang berguna untuk menyimpan kumpulan data.
+- **Function**: ya benar, ini juga berupa `object`. Function dalam JavaScript disebut juga *First-Class Function* yang merupakan ciri khas JavaScript.
 
 #### Contoh Penggunaan:
 ```javascript
@@ -47,18 +53,40 @@ let job; // Undefined
 let email = null; // Null
 let isStudent = true; // Boolean
 let age = 25; // Number
-let name = "John"; // String
-let person = { firstName: "Alice", lastName: "Doe" }; // Object
-let numbers = [1, 2, 3, 4, 5]; // Array
+const name = "John"; // String
+const person = { firstName: "Alice", lastName: "Doe" }; // Object
+const numbers = [1, 2, 3, 4, 5]; // Array
 ```
 
-### Object
-Dalam JavaScript, object bersifat _mutable_ (dapat diubah). Objek adalah sebuah struktur data kompleks yang berisi kumpulan properti dan nilai.
-Satu ciri khas yang membedakan JavaScript dengan bahasa lainnya adalah `function` juga merupakan object. Dan karena Function juga merupakan object maka object itu dapat diberi/ditambahkan properti atau method dan dapat dianggap seperti variabel biasa. Konsep ini dalam JavaScript dikenal juga dengan sebutan "*First-Class Function*".
+Tipe data primitif bersifat _immutable_ sedangkan tipe object bersifat _mutable_. 
 
-#### Tugas
-1. Buat variabel dengan masing-masing tipe data di atas.
-2. Cetak semua variabel tersebut ke console menggunakan `console.log()`.
+### Operator Dasar JavaScript
+
+Beberapa operator **aritmatika**:
+- Tambah `+`, kurang `-`, kali `*`, bagi `/`
+- Sisa pembagian, atau disebut modulus `%`
+- Eksponen `**`
+- `++` Increment, `--` decrement
+
+Operator **perbandingan**:
+- Kesamaan nilai `==`
+- Kesamaan nilai dan tipe, atau disebut strict equality `===`
+- Ketidaksamaan `!=`
+- Ketidaksamaan nilai dan tipe `!==`
+- Lebih dari `>`, kurang dari `<`
+- Sama atau lebih dari `>=`, sama atau kurang dari `<=`
+
+Operator **logis**:
+- Logika AND `&&`
+- Logika OR `||`
+- Logigka NOT `!`
+
+Kondisional (**Ternary**) Operator, adalah oeprator yg membutuhkan 3 operand yang berguna sebagai cara singkat menulis `if...else`, sintaks: `condition ? expressionIfTrue : expressionIfFalse`
+
+Operator string:
+- `+` menyambung string
+- `+=` juga menyambung string, sekaligus assignment ke variabel
+
 
 #### Tautan
 - [JavaScript data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures)
