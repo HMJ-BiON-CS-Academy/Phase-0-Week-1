@@ -70,16 +70,16 @@ Beberapa operator **aritmatika**:
 
 Operator **perbandingan**:
 - Kesamaan nilai `==`
-- Kesamaan nilai dan tipe, atau disebut strict equality `===`
+- Kesamaan nilai dan tipe data, atau disebut strict equality `===`
 - Ketidaksamaan `!=`
-- Ketidaksamaan nilai dan tipe `!==`
+- Ketidaksamaan nilai dan tipe data `!==`
 - Lebih dari `>`, kurang dari `<`
 - Sama atau lebih dari `>=`, sama atau kurang dari `<=`
 
 Operator **logis**:
 - Logika AND `&&`
 - Logika OR `||`
-- Logigka NOT `!`
+- Logika NOT `!`
 
 Kondisional (**Ternary**) Operator, adalah oeprator yg membutuhkan 3 operand yang berguna sebagai cara singkat menulis `if...else`, sintaks: `condition ? expressionIfTrue : expressionIfFalse`
 
@@ -94,62 +94,16 @@ Operator string:
 
 ---
 
-## 2. Loop (Perulangan)
-Loop digunakan untuk menjalankan blok kode berulang kali.
-
-### Jenis Loop dalam JavaScript:
-1. **for** - Perulangan dengan jumlah iterasi yang sudah diketahui.
-2. **for...in**  - Perulangan terhadap key dari sebuah koleksi.
-3. **for...of** - Perulangan terhadap nilai dari sebuah koleksi.
-4. **forEach** - Khusus untuk array.
-5. **while** - Perulangan selama kondisi tertentu masih bernilai `true`.
-6. **do...while** - Mirip dengan `while`, tetapi dijalankan minimal sekali sebelum pengecekan kondisi.
-
-
-### Contoh Penggunaan:
-```javascript
-// for loop
-for (let i = 0; i < 5; i++) {
-  console.log("Iterasi ke-" + i);
-}
-
-// while loop
-let j = 0;
-while (j < 5) {
-  console.log("Iterasi ke-" + j);
-  j++;
-}
-
-// do...while loop
-let k = 0;
-do {
-  console.log("Iterasi ke-" + k);
-  k++;
-} while (k < 5);
-
-// forEach loop untuk array
-let fruits = ["Apple", "Banana", "Cherry"];
-fruits.forEach(function(fruit) {
-  console.log(fruit);
-});
-```
-
-### Assignment:
-1. Buat perulangan `for` yang mencetak angka 1 sampai 10.
-2. Gunakan `while` untuk mencetak angka 10 sampai 1.
-3. Buat array berisi 5 nama buah, lalu cetak semua elemen menggunakan `forEach`.
-
----
-
-## 3. Control Flow (Alur Kontrol)
+## II. Control Flow (Conditionals & Looping)
+### Control Flow 1: Conditionals
 Alur kontrol digunakan untuk menentukan bagaimana kode dijalankan berdasarkan kondisi tertentu.
 
-### Struktur Control Flow:
+#### Struktur Control Flow:
 1. **if, else if, else** - Untuk menjalankan kode berdasarkan kondisi tertentu.
 2. **switch** - Alternatif dari `if...else` untuk banyak kondisi.
 3. **ternary operator** - Sintaks singkat untuk `if...else`.
 
-### Contoh Penggunaan:
+#### Contoh Penggunaan:
 ```javascript
 // if, else if, else
 let score = 85;
@@ -180,6 +134,94 @@ let message = age >= 18 ? "Dewasa" : "Anak-anak";
 console.log(message);
 ```
 
-### Assignment:
+#### Assignment:
 1. Buat program yang meminta pengguna memasukkan angka, lalu cetak apakah angka tersebut positif, negatif, atau nol.
 2. Buat program menggunakan `switch` yang mencetak nama hari berdasarkan a
+
+---
+
+## Control Flow 2: Looping
+Loop digunakan untuk menjalankan blok kode berulang kali.
+
+#### Jenis Loop dalam JavaScript:
+1. **for** - Perulangan dengan jumlah iterasi yang sudah diketahui.
+2. **for...in**  - Perulangan terhadap key dari sebuah koleksi.
+3. **for...of** - Perulangan terhadap nilai dari sebuah koleksi.
+4. **forEach** - Khusus untuk array.
+5. **while** - Perulangan selama kondisi tertentu masih bernilai `true`.
+6. **do...while** - Mirip dengan `while`, tetapi dijalankan minimal sekali sebelum pengecekan kondisi.
+
+
+#### Contoh Penggunaan:
+```javascript
+// for loop
+for (let i = 0; i < 5; i++) {
+  console.log("Iterasi ke-" + i);
+}
+
+// while loop
+let j = 0;
+while (j < 5) {
+  console.log("Iterasi ke-" + j);
+  j++;
+}
+
+// do...while loop
+let k = 0;
+do {
+  console.log("Iterasi ke-" + k);
+  k++;
+} while (k < 5);
+
+// forEach loop untuk array
+let fruits = ["Apple", "Banana", "Cherry"];
+fruits.forEach(function(fruit) {
+  console.log(fruit);
+});
+```
+
+#### Assignment:
+1. Buat perulangan `for` yang mencetak angka 1 sampai 10.
+2. Gunakan `while` untuk mencetak angka 10 sampai 1.
+3. Buat array berisi 5 nama buah, lalu cetak semua elemen menggunakan `forEach`.
+
+---
+
+## III. Functions
+Function adalah blok kode yang dirancang untuk melakukan tugas tertentu. Function memungkinkan kita untuk menulis kode yang dapat digunakan kembali, sehingga meningkatkan efisiensi dan mengurangi duplikasi kode.
+
+Dalam JavaScript, ada beberapa cara untuk mendefinisikan function:
+
+1. **Function Declaration**: Function yang dideklarasikan dengan kata kunci `function`.
+2. **Function Expression**: Function yang disimpan dalam sebuah variabel.
+3. **Arrow Function**: Bentuk ringkas dari function expression.
+
+### Contoh Penggunaan
+
+#### Function Declaration
+
+```javascript
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+console.log(greet("Alice")); // Output: Hello, Alice!
+```
+
+#### Function Expression
+
+```javascript
+const greet = function(name) {
+    return `Hello, ${name}!`;
+};
+console.log(greet("Bob")); // Output: Hello, Bob!
+```
+
+#### Arrow Function
+
+```javascript
+const greet = (name) => `Hello, ${name}!`;
+console.log(greet("Charlie")); // Output: Hello, Charlie!
+```
+---
+
+## IV. Closures, IIFE, `this` keyword
