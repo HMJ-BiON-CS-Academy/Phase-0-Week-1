@@ -14,7 +14,7 @@ Untuk dipahami bahwa NodeJs itu mengekstensi fitur-fitur yang ada dari V8 Engine
 ### Deklarasi Variabel
 Terdapat 3 kata kunci untuk deklarasi variable dalam JavaScript: `var`, `let`, dan `const`.
 - `var` sudah ada sejak awal mula JavaScript. Deklarasi variabel dengan `var` memiliki *scope* (ruang lingkup) global, atau function. Artinya hanya dapat diakses didalam fungsi dimana variable `var` dideklarasikan, atau dapat diakses secara global jika dideklarasikan diluar fungsi.
-- `let` diperkenalkan sejak ES6. Deklarasi variable dengan `let` memiliki *block scope*. Artinya hanya dapat diakses dalam ruang lingkup sebuah blok (dalam lingkup `if`, atau lingkup `for`, atau dalam lingkup tanda { }).
+- `let` diperkenalkan sejak ES6. Deklarasi variable dengan `let` memiliki *block scope*. Artinya hanya dapat diakses dalam ruang lingkup sebuah blok (dalam lingkup `if`, atau lingkup `for`, atau dalam lingkup tanda `{ }`).
 - `const` mirip dengan `let`. Digunakan untuk deklarasi variabel yang bersifat *read-only* (isi variabel tidak dapat diubah).
 
 ```javascript
@@ -59,6 +59,29 @@ const numbers = [1, 2, 3, 4, 5]; // Array
 ```
 
 Tipe data primitif bersifat _immutable_ sedangkan tipe object bersifat _mutable_. 
+
+### Hoisting
+Hoisting (pengangkatan) adalah perilaku default javascript yang secara otomatis memindahkan deklarasi variabel ke bagian paling atas/awal dalam scope deklarasinya (scope global atau function) pada saat kompilasi, sebelum kode dijalankan. 
+```
+    myFunction(); // This works!
+    function myFunction() {
+      console.log("Hello from myFunction!");
+    }
+```
+- Deklarasi dengan `var` akan di-hoisted ke awal scope. Tetapi inisialisasi variabel itu tetap sesuai dimana baris ditulis.
+```
+    console.log(myVar); // Outputs: undefined
+    var myVar = "Hello";
+    console.log(myVar); // Outputs: Hello
+```
+- Deklarasi dengan `let` dan `const` juga seperti `var`, tetapi variabel tidak dapat diakses sampai inisialisasi dilakukan
+```
+    // console.log(myLet); // ReferenceError: Cannot access 'myLet' before initialization
+    let myLet = "Hello";
+
+    // console.log(myConst); // ReferenceError: Cannot access 'myConst' before initialization
+    const myConst = "World";
+```
 
 ### Operator Dasar JavaScript
 
@@ -133,6 +156,44 @@ let age = 18;
 let message = age >= 18 ? "Dewasa" : "Anak-anak";
 console.log(message);
 ```
+
+#### Truthy & Falsy values
+Dalam konteks boolean (true/false) JavaScript menganggap beberapa nilai sebagai `true`, dan kebalikannya sebagai `false`. Berikut nilai-nilai yang dianggap **falsy**:
+```javascript
+if (false) {
+  // Not reachable
+}
+
+if (null) {
+  // Not reachable
+}
+
+if (undefined) {
+  // Not reachable
+}
+
+if (0) {
+  // Not reachable
+}
+
+if (-0) {
+  // Not reachable
+}
+
+if (0n) {
+  // Not reachable
+}
+
+if (NaN) {
+  // Not reachable
+}
+
+if ("") {
+  // Not reachable
+}
+
+```
+Maka nilai-nilai yang tidak termasuk falsy, adalah truthy. Lebih mudah mengingat nilai apa saja yang dianggap `false`, dan kebalikannya otomatis adalah `true`.
 
 #### Assignment:
 1. Buat program yang meminta pengguna memasukkan angka, lalu cetak apakah angka tersebut positif, negatif, atau nol.
@@ -225,3 +286,87 @@ console.log(greet("Charlie")); // Output: Hello, Charlie!
 ---
 
 ## IV. Closures, IIFE, `this` keyword
+### Closures
+Closures adalah istilah yang menggambarkan gabungan fungsi-fungsi yang membentuk ruang tertutup sendiri (enclosed), dimana fungsi yang lebih didalam (nesting) dapat mengakses member diluar lingkup/scope-nya sendiri.
+
+```javascript
+function createProgressTracker(courseName) {
+    let completedLessons = 0;
+
+    return {
+        completeLesson: function () {
+            completedLessons++;
+            console.log(`You have completed ${completedLessons} lesson(s) in ${courseName}.`);
+        },
+        getProgress: function () {
+            return completedLessons;
+        }
+    };
+}
+
+// For a JavaScript course
+const jsCourseProgress = createProgressTracker("JavaScript Essentials");
+
+jsCourseProgress.completeLesson(); // You have completed 1 lesson(s) in JavaScript Essentials.
+jsCourseProgress.completeLesson(); // You have completed 2 lesson(s)...
+
+console.log(jsCourseProgress.getProgress()); // 2
+
+```
+Jika anda ingat, sebuah function juga merupakan sebuah object. Sehingga `createProgressTracker()` dapat ditampung dalam sebuah variable `jsCourseProgress`. Sebuah ruang lingkup tertutup (closures) yang bernama `createProgressTracker` terbentuk. Dari luar lingkup, kita hanya dapat memanggil `completeLesson()` dan `getProgress()`, namun variabel `completedLessons` tidak dapat diakses dari luar lingkup (dapat dianggap sebuah **enkapsulasi**). Selama didalam ruang tertutup itu, variabel `completedLessons` dapat diakses dimana saja, baik didalam fungsi `completeLesson()` atau fungsi `getProgress()`.
+
+### Immediately Invoked Function Expresssion (IIFE)
+Adalah deklarasi fungsi yang langsung tereksekusi ketika dideklarasikan. Sering dijumpai  bentuk IIFE ini pada modul/library eksternal karena ini adalah pola modular. IIFE membentuk scope-nya sendiri sehingga terbentuk enkapsulasi (private scope). Berikut bentuk dari IIFE:
+```
+    (function() {
+        // Function body
+    })(); // ← IIFE: defined and invoked immediately
+```
+Contoh sebuah modul `CourseModule.js`:
+```
+// CourseModule.js
+
+const CourseApp = (() => {
+  const courses = [
+    { id: 1, title: "JavaScript Fundamentals", level: "Beginner" },
+    { id: 2, title: "Node.js for Web Developers", level: "Intermediate" },
+    { id: 3, title: "React in Practice", level: "Advanced" },
+  ];
+
+  function renderCourses() {
+    console.log("Available Courses:");
+    courses.forEach(course => {
+      console.log(`- ${course.title} [${course.level}]`);
+    });
+  }
+
+  function findCourseById(id) {
+    return courses.find(course => course.id === id);
+  }
+
+  // Public API
+  return {
+    render: renderCourses,
+    find: findCourseById
+  };
+})(); // ← IIFE: defined and invoked immediately
+
+// Usage
+CourseApp.render(); // Initializes and prints course list
+const selected = CourseApp.find(2);
+console.log("Selected course:", selected.title);
+```
+Kegunaan IIFE:
+- IIFE menjaga variabel courses tidak dapat diakses dari luar (global scope)
+- Variabel dan fungsi langsung terinisialisasi
+- Hanya menampakkan interface yang diperlukan saja (`render()` dan `find()`)
+
+### The `this` keyword
+🧠 Concept Summary of `this`:
+| Skenario | `this` mengacu kepada |
+| --- | --- |
+| Dalam Fungsi | Objek Global (`window` pada browser) |
+| Dalam Method | Objek dimana method itu berada |
+| Dalam Arrow Function | Reference `this` dalam scope |
+| Dalam Event Listener | Element terkait event |
+| Penggunaan `call`,`apply`,`bind`| diatur secara eksplisit |
