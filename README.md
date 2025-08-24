@@ -17,6 +17,7 @@ Terdapat 3 kata kunci untuk deklarasi variable dalam JavaScript: `var`, `let`, d
 - `let` diperkenalkan sejak ES6. Deklarasi variable dengan `let` memiliki *block scope*. Artinya hanya dapat diakses dalam ruang lingkup sebuah blok (dalam lingkup `if`, atau lingkup `for`, atau dalam lingkup tanda `{ }`).
 - `const` mirip dengan `let`. Digunakan untuk deklarasi variabel yang bersifat *read-only* (isi variabel tidak dapat diubah).
 
+Contoh-1
 ```javascript
 function testScope() {
   if (true) {
@@ -31,6 +32,35 @@ function testScope() {
 testScope();
 ```
 
+Contoh-2
+```javascript
+// Imagine we are tracking quiz attempts
+var attempts = 1;
+var attempts = 2; // allowed with var
+
+let score = 10;
+// let score = 20; ❌ Not allowed (will cause error)
+
+const maxAttempts = 3;
+// const maxAttempts = 4; ❌ Not allowed (will cause error)
+
+// ✅ Re-assignment check
+attempts = 5;  // works
+score = 15;    // works
+// maxAttempts = 2; ❌ Not allowed
+
+console.log("attempts:", attempts);     // 5
+console.log("score:", score);           // 15
+console.log("maxAttempts:", maxAttempts); // 3
+```
+- `var` dapat dideklarasi ulang
+- `let` dapat tidak dapat dideklarasi ulang, namun bisa di-assign ulang
+- `const` tidak dapat dideklarasi ulang atau di-assign ulang
+
+#### Tugas
+1. Buatlah variabel global `studentName`, variabel blok `subject` dan variabel konstan `maxScore`
+2. Dari tugas pertama, buatlah sebuah block scope. Deklarasi ulang ketiga variabel dengan nilai berbeda dan tampilkan hasilnya dengan `console.log()`
+3. Dari tugas kedua, tampilkan nilai dari ketiga variabel 
 
 ### Tipe-Tipe Data
 JavaScript memiliki tipe data dinamis atau disebut juga _weakly typed_. Sifat dinamis ini membuat suatu variabel dapat diberi nilai dengan tipe data apapun. Ketika suatu operasi melibatkan tipe data yang berbeda, konversi tipe data akan dilakukan secara implisit (otomatis).
@@ -62,26 +92,30 @@ Tipe data primitif bersifat _immutable_ sedangkan tipe object bersifat _mutable_
 
 ### Hoisting
 Hoisting (pengangkatan) adalah perilaku default javascript yang secara otomatis memindahkan deklarasi variabel ke bagian paling atas/awal dalam scope deklarasinya (scope global atau function) pada saat kompilasi, sebelum kode dijalankan. 
-```
+```javascript
     myFunction(); // This works!
     function myFunction() {
       console.log("Hello from myFunction!");
     }
 ```
 - Deklarasi dengan `var` akan di-hoisted ke awal scope. Tetapi inisialisasi variabel itu tetap sesuai dimana baris ditulis.
-```
+```javascript
     console.log(myVar); // Outputs: undefined
     var myVar = "Hello";
     console.log(myVar); // Outputs: Hello
 ```
 - Deklarasi dengan `let` dan `const` juga seperti `var`, tetapi variabel tidak dapat diakses sampai inisialisasi dilakukan
-```
+```javascript
     // console.log(myLet); // ReferenceError: Cannot access 'myLet' before initialization
     let myLet = "Hello";
 
     // console.log(myConst); // ReferenceError: Cannot access 'myConst' before initialization
     const myConst = "World";
 ```
+
+#### Tugas
+1. Buatlah variabel string `studentName`, number `score`, bool `isPassed`.
+2. Tampilkan pada konsol per baris, "Nama murid: {studentName}", "Nilai: {score}", "Lulus: {isPassed}"
 
 ### Operator Dasar JavaScript
 
@@ -99,7 +133,7 @@ Operator **perbandingan**:
 - Lebih dari `>`, kurang dari `<`
 - Sama atau lebih dari `>=`, sama atau kurang dari `<=`
 
-Operator **logis**:
+Operator **logika**:
 - Logika AND `&&`
 - Logika OR `||`
 - Logika NOT `!`
@@ -110,6 +144,11 @@ Operator string:
 - `+` menyambung string
 - `+=` juga menyambung string, sekaligus assignment ke variabel
 
+#### Tugas
+1. Buatlah variabel `jumlahBenar` dan `bobotNilai`. Kalikan lalu tampilkan hasilnya pada konsol!
+2. Dari hasil tugas-1, buatlah variabel `passingGrade`. Gunakan operator perbandingan. Tampilkan teks "Lulus" jika mencapai passing grade!
+3. Buatlah variabel `isKehadiranCukup` dan `isTugasSelesai`. Gunakan operator logika yang menghasilkan output variabel `isLayakUjian` jika kedua variabel sebelumnya bernilai `true`.
+4. Dari hasil tugas-2, tampilkan teks "Nama {nama} - nilai: {nilai}". Gunakan operator string untuk menyambungkan teks!
 
 #### Tautan
 - [JavaScript data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures)
@@ -163,41 +202,33 @@ Dalam konteks boolean (true/false) JavaScript menganggap beberapa nilai sebagai 
 if (false) {
   // Not reachable
 }
-
 if (null) {
   // Not reachable
 }
-
 if (undefined) {
   // Not reachable
 }
-
 if (0) {
   // Not reachable
 }
-
 if (-0) {
   // Not reachable
 }
-
 if (0n) {
   // Not reachable
 }
-
 if (NaN) {
   // Not reachable
 }
-
 if ("") {
   // Not reachable
 }
-
 ```
 Maka nilai-nilai yang tidak termasuk falsy, adalah truthy. Lebih mudah mengingat nilai apa saja yang dianggap `false`, dan kebalikannya otomatis adalah `true`.
 
-#### Assignment:
+#### Tugas
 1. Buat program yang meminta pengguna memasukkan angka, lalu cetak apakah angka tersebut positif, negatif, atau nol.
-2. Buat program menggunakan `switch` yang mencetak nama hari berdasarkan a
+2. Buatlah program perhitungan nilai huruf Binus dari sebuah nilai angka. A (90-100), A- (85-89), B+ (80-84), B (75-79), B- (70-74), C (65-69), D(50-64), E (0-49)
 
 ---
 
@@ -239,6 +270,18 @@ let fruits = ["Apple", "Banana", "Cherry"];
 fruits.forEach(function(fruit) {
   console.log(fruit);
 });
+```
+
+Contoh perbedaan scope variabel dalam perulangan
+```javascript
+// Suppose we loop through quiz questions
+for (var i = 1; i <= 3; i++) {
+    setTimeout(() => console.log("var i:", i), 100);
+}
+
+for (let j = 1; j <= 3; j++) {
+    setTimeout(() => console.log("let j:", j), 100);
+}
 ```
 
 #### Assignment:
@@ -317,13 +360,13 @@ Jika anda ingat, sebuah function juga merupakan sebuah object. Sehingga `createP
 
 ### Immediately Invoked Function Expresssion (IIFE)
 Adalah deklarasi fungsi yang langsung tereksekusi ketika dideklarasikan. Sering dijumpai  bentuk IIFE ini pada modul/library eksternal karena ini adalah pola modular. IIFE membentuk scope-nya sendiri sehingga terbentuk enkapsulasi (private scope). Berikut bentuk dari IIFE:
-```
+```javascript
     (function() {
         // Function body
     })(); // ← IIFE: defined and invoked immediately
 ```
 Contoh sebuah modul `CourseModule.js`:
-```
+```javascript
 // CourseModule.js
 
 const CourseApp = (() => {
