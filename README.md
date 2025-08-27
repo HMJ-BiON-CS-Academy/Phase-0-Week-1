@@ -285,10 +285,10 @@ for (let j = 1; j <= 3; j++) {
 ```
 
 #### Assignment:
-1. Buat perulangan `for` yang mencetak angka 1 sampai 10.
-2. Gunakan `while` untuk mencetak angka 10 sampai 1.
-3. Buat array berisi 5 nama buah, lalu cetak semua elemen menggunakan `forEach`.
-
+1. Buat perulangan `for` yang mencetak angka 1 sampai 10. Untuk setiap angka ganjil, tambahkan teks "Ganjil".
+2. Diketahui sebuah array `let scores = [80, 45, 67, 30, , "", 90, undefined, 55];` dan passing grade adalah 60. Gunakan perulangan `for...of` untuk menampilkan teks "Lulus" atau "Gagal".
+3. Diketahui sebuah array `let completed = [true, "", true, true, false];` gunakan looping `forEach` untuk menampilkan teks "Lesson {i} is completed ✅" jika bernilai true. Ganti dengan "... is not completed ❌" jika bernilai false.
+4. Diketahui sebuah array `let scores = [80, 70, 60, "", 90, 0, null, 60];`, hitung Total skor, dan hitung rata-rata (abaikan skor 0 atau bukan angka).
 ---
 
 ## III. Functions
@@ -326,6 +326,11 @@ console.log(greet("Bob")); // Output: Hello, Bob!
 const greet = (name) => `Hello, ${name}!`;
 console.log(greet("Charlie")); // Output: Hello, Charlie!
 ```
+
+#### Tugas
+1. Diketahui sebuah array `const scores = [80, 45, "", 67, 90, undefined, 55];`, buatlah fungsi yang menerima parameter array skor dan menghitung berapa banyak skor diatas 60.
+2. Diketahui array `const lessons = ["Math", "Science", "Philosophy", "Art"];`, buatlah fungsi yang menerima parameter array ini dan mengembalikan teks terpanjang.
+3. Diketahui array `const topics = ["Algebra", "Biology", "Art", "Astronomy"];`, buatlah fungsi yang menerima 2 parameter array dan string. Hitunglah berapa banyak teks yang diawali dengan parameter string tersebut.
 ---
 
 ## IV. Closures, IIFE, `this` keyword
@@ -357,6 +362,21 @@ console.log(jsCourseProgress.getProgress()); // 2
 
 ```
 Jika anda ingat, sebuah function juga merupakan sebuah object. Sehingga `createProgressTracker()` dapat ditampung dalam sebuah variable `jsCourseProgress`. Sebuah ruang lingkup tertutup (closures) yang bernama `createProgressTracker` terbentuk. Dari luar lingkup, kita hanya dapat memanggil `completeLesson()` dan `getProgress()`, namun variabel `completedLessons` tidak dapat diakses dari luar lingkup (dapat dianggap sebuah **enkapsulasi**). Selama didalam ruang tertutup itu, variabel `completedLessons` dapat diakses dimana saja, baik didalam fungsi `completeLesson()` atau fungsi `getProgress()`.
+
+#### Tugas
+1. Anda ingin menyimpan skor yang tidak dapat di-assign ulang secara langsung. Buatlah sebuah closures yang mengembalikan 2 fungsi `addPoints(point)` dan `getScore()` untuk mengakses & ubah skor. Tampilkan 2 skor yang berbeda!
+```javascript
+// Example usage:
+const alice = createScore();
+const bob = createScore();
+
+alice.addPoints(10);
+bob.addPoints(20);
+
+console.log(alice.getScore()); // 10
+console.log(bob.getScore());   // 20
+``` 
+2. 
 
 ### Immediately Invoked Function Expresssion (IIFE)
 Adalah deklarasi fungsi yang langsung tereksekusi ketika dideklarasikan. Sering dijumpai  bentuk IIFE ini pada modul/library eksternal karena ini adalah pola modular. IIFE membentuk scope-nya sendiri sehingga terbentuk enkapsulasi (private scope). Berikut bentuk dari IIFE:
