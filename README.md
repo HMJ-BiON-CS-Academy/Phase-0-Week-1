@@ -376,7 +376,16 @@ bob.addPoints(20);
 console.log(alice.getScore()); // 10
 console.log(bob.getScore());   // 20
 ``` 
-2. 
+2. Anda diminta membuat sebuah modul Flashcard. Buatlah sebuah closures yang mengembalika 2 fungsi `showQuestion()` dan `checkAnswer(answer)` untuk menampilkan soal dan menjawab.
+```javascript
+// Example usage:
+const card1 = createFlashcard("What is 5 + 3?", "8");
+
+card1.showQuestion();
+card1.checkAnswer("7");   // Wrong
+card1.checkAnswer("8");   // Correct
+console.log("Score:", card1.getScore()); // Should show 1
+```
 
 ### Immediately Invoked Function Expresssion (IIFE)
 Adalah deklarasi fungsi yang langsung tereksekusi ketika dideklarasikan. Sering dijumpai  bentuk IIFE ini pada modul/library eksternal karena ini adalah pola modular. IIFE membentuk scope-nya sendiri sehingga terbentuk enkapsulasi (private scope). Berikut bentuk dari IIFE:
@@ -423,6 +432,31 @@ Kegunaan IIFE:
 - IIFE menjaga variabel courses tidak dapat diakses dari luar (global scope)
 - Variabel dan fungsi langsung terinisialisasi
 - Hanya menampakkan interface yang diperlukan saja (`render()` dan `find()`)
+
+#### Tugas
+Diketahui potongan code berikut:
+```javascript
+let score = 0;
+let questions = [
+  { q: "2 + 2 = ?", a: "4" },
+  { q: "Capital of France?", a: "Paris" }
+];
+
+function checkAnswer(questionIndex, answer) {
+  if (questions[questionIndex].a === answer) {
+    score++;
+    console.log("Correct! Score: " + score);
+  } else {
+    console.log("Wrong! Score: " + score);
+  }
+}
+
+checkAnswer(0, "4");
+checkAnswer(1, "London");
+```
+1. Refactor code ini menggunakan teknik IIFE sehingga didapat sebuah object `Quiz`.
+2. Tambahkan satu public method `getScore()` untuk melihat skor akhir.
+3. Buktikan `score` dan `questions` tidak dapat diakses dari luar. 
 
 ### The `this` keyword
 🧠 Concept Summary of `this`:
